@@ -17,7 +17,7 @@ The game's rules, operations, contract and board view are the SDK's [tic-tac-toe
 | `apps/tic-tac-toe/src/game-object.ts` | One SQLite-backed Durable Object per game, its fixed 24-hour expiry and alarm cleanup. |
 | `apps/tic-tac-toe/src/game-store.ts` | The game's `GameStore` seam over those objects. |
 | `apps/tic-tac-toe/src/config.ts`, `wrangler.jsonc` | Bindings, route, allowed hosts and connector icons: this deployment's settings, separate from SDK delivery code. |
-| `apps/tic-tac-toe/view` | The card's page: the dragon above the staged game's own entry, which is mounted unchanged. The dragon follows the host's theme. |
+| `apps/tic-tac-toe/view` | The card's page: the dragon above the staged game, started through the game's own `startView`. The dragon follows the host's theme, which `startView` hands over through the stack's typed `hostContext` callback; nothing here reads host messages. |
 | `apps/tic-tac-toe/public/tic-tac-toe/icons` | The SDK's selected dragon artwork, light and dark, unchanged (digests in `scripts/icon-digests.mjs`, checked by `npm run check`). The connector announces all four files; the card embeds the two small ones. |
 
 ### Behavior

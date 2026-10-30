@@ -9,8 +9,9 @@ import { root } from './sdk-archive.mjs';
 // `npm run stage`; both outputs are ignored by Git.
 //
 // The page is this application's shell, apps/tic-tac-toe/view/index.html: the SAGA dragon, then
-// the staged game's own entry (.stage/game/src/main.tsx), unchanged. The rules, the board and the
-// shared "Built with saga a2ui" credit all come from the pinned SDK source.
+// the staged game's canonical `startView` (.stage/game/src/view.tsx), started from main.ts with a
+// host-context callback for the dragon. The rules, the board and the shared "Built with saga a2ui"
+// credit all come from the pinned SDK source.
 
 const shell = path.join(root, 'apps', 'tic-tac-toe', 'view');
 const out = path.join(root, '.stage', 'view');
