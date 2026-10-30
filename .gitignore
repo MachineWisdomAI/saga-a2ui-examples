@@ -5,7 +5,6 @@
 node_modules/
 .stage/
 .cache/
-.qualify/
 dist/
 .wrangler/
 test-results/
