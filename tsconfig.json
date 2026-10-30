@@ -10,5 +10,6 @@
     "types": ["@cloudflare/workers-types", "@cloudflare/vitest-plugin/types"],
     "jsx": "react-jsx"
   },
-  "include": ["apps", "vitest.config.ts", ".stage/game/server", ".stage/game/src/contract.ts"]
+  "include": ["apps", "vitest.config.ts", ".stage/game/server", ".stage/game/src/contract.ts"],
+  "exclude": ["apps/tic-tac-toe/view", "apps/tic-tac-toe/browser"]
 }

@@ -1,0 +1,22 @@
+/* The dragon follows the host's theme. The icon files are the SDK's, light and dark, unchanged;
+   Vite embeds each as a data: URI. Until the host has said which theme it uses, the viewer's
+   own colour preference chooses. */
+.brand {
+  margin-bottom: 0.75rem;
+}
+.brand-mark {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.4rem;
+  background: center / contain no-repeat
+    url('../public/tic-tac-toe/icons/composer-icon-light.png');
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-host-theme]) .brand-mark {
+    background-image: url('../public/tic-tac-toe/icons/composer-icon-dark.png');
+  }
+}
+:root[data-host-theme='dark'] .brand-mark {
+  background-image: url('../public/tic-tac-toe/icons/composer-icon-dark.png');
+}

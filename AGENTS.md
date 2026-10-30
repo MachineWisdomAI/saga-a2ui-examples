@@ -24,6 +24,6 @@ Public repository of hosted SAGA A2UI example applications and the Claude plugin
 - The game's rules and view have one owner, the SDK. Never copy them here: change the SDK, then update the pin (`sdk-source.json`; see the README).
 - Keep deployment bindings and settings (`wrangler.jsonc`, `src/config.ts`) separate from SDK delivery code.
 - Run `npm run check` before review. Source readiness, registry consumption, deployment and actual-host acceptance are separate claims; do not report one as another.
-- The dragon icon files are the SDK's artwork, used unchanged; a replacement is a deliberate change to `scripts/check-icons.mjs` and the SDK's record together.
+- The dragon icon files are the SDK's artwork, used unchanged; a replacement is a deliberate change to `scripts/icon-digests.mjs` and the SDK's record together. The card shows them inside the page (`apps/tic-tac-toe/view`); the browser test checks the embedded bytes against those digests.
 - PNG and other media use Git LFS (`.gitattributes`). The pre-push guard does not run LFS: run `git lfs push origin BRANCH` before `git push origin BRANCH`, and check pointers with `python3 scripts/check-lfs.py`.
 - This is an unversioned application: no release unit is enrolled.

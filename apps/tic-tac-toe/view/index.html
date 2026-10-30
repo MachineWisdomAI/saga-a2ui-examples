@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      No Content-Security-Policy here: the host applies the one the server publishes with this
+      resource (a closed view: no network, no external resource). The dragon is embedded in this
+      page as a data: image, which that policy allows.
+    -->
+    <title>Tic-tac-toe</title>
+  </head>
+  <body>
+    <!--
+      The hosted card's branding: the SAGA dragon above the game, in every state (playing, over or
+      showing a recoverable error). The game itself and its removable "Built with saga a2ui" credit
+      are the pinned SDK's view, mounted in #root below and not changed.
+    -->
+    <header class="brand">
+      <span class="brand-mark" role="img" aria-label="SAGA dragon"></span>
+    </header>
+    <div id="root"></div>
+    <!-- The brand script first: it must be listening before the game connects to the host. -->
+    <script type="module" src="./brand.ts"></script>
+    <script type="module" src="../../../.stage/game/src/main.tsx"></script>
+  </body>
+</html>

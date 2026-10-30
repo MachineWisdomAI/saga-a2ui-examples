@@ -28,5 +28,7 @@ jobs:
       # `npm ci` once they are published and a lockfile is committed.
       - name: Install dependencies, with the pinned SDK packed locally
         run: node scripts/qualify-sdk-packages.mjs
+      - name: Install the browser for the rendered-card tests
+        run: npx playwright install --with-deps chromium
       - name: Check
         run: npm run check

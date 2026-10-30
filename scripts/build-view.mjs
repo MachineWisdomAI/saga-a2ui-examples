@@ -4,15 +4,19 @@ import { build } from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import { root } from './sdk-archive.mjs';
 
-// Builds the staged game's board view into one self-contained HTML document (an MCP host mounts
-// the exact bytes the server serves), then writes it as a TypeScript string constant the Worker
-// bundles. Run after `npm run stage`; both outputs are ignored by Git.
+// Builds the board view into one self-contained HTML document (an MCP host mounts the exact bytes
+// the server serves), then writes it as a TypeScript string constant the Worker bundles. Run after
+// `npm run stage`; both outputs are ignored by Git.
+//
+// The page is this application's shell, apps/tic-tac-toe/view/index.html: the SAGA dragon, then
+// the staged game's own entry (.stage/game/src/main.tsx), unchanged. The rules, the board and the
+// shared "Built with saga a2ui" credit all come from the pinned SDK source.
 
-const game = path.join(root, '.stage', 'game');
+const shell = path.join(root, 'apps', 'tic-tac-toe', 'view');
 const out = path.join(root, '.stage', 'view');
 
 await build({
-  root: game,
+  root: shell,
   base: './',
   configFile: false,
   logLevel: 'warn',
