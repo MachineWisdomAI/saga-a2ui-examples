@@ -9,5 +9,5 @@ export default defineConfig({
       wrangler: { configPath: './apps/tic-tac-toe/wrangler.jsonc' },
     }),
   ],
-  test: { include: ['apps/**/test/**/*.test.ts'] },
+  test: { include: ['apps/tic-tac-toe/test/**/*.test.ts'] },
 });

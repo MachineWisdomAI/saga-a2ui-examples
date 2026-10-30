@@ -40,7 +40,7 @@ export function readSettings(bindings: SettingsBindings): Settings {
   return { allowedHosts, publicOrigin: origin.origin };
 }
 
-/** What a host reads about the connector's icons: the SAGA dragon, light and dark. */
+/** What a host reads about the connector's icons: the saga dragon, light and dark. */
 export interface BrandIcon {
   readonly src: string;
   readonly mimeType: 'image/png';

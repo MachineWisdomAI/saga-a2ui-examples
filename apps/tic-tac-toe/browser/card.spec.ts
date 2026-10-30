@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { expect, test, type FrameLocator, type Page } from '@playwright/test';
 import { ICON_DIGESTS } from '../../../scripts/icon-digests.mjs';
-import { TEXT } from '../../../.stage/game/src/contract.js';
+import { TEXT } from '../game/src/contract.js';
 
 // The built card as a person sees it: the exact HTML the Worker serves, in a real browser, behind
 // a stand-in for an MCP Apps host. The host answers the card's handshake with a theme, delivers
@@ -150,7 +150,7 @@ for (const theme of themes)
       const box = (await mark(card).boundingBox())!;
       expect(box.width).toBeGreaterThan(16);
       expect(box.height).toBeGreaterThan(16);
-      await expect(mark(card)).toHaveAttribute('aria-label', 'SAGA dragon');
+      await expect(mark(card)).toHaveAttribute('aria-label', 'saga dragon');
       // The bytes on screen are the SDK's selected file for the host theme, unchanged.
       expect(await shownDigest(card)).toBe(
         ICON_DIGESTS[`composer-icon-${theme}.png`],

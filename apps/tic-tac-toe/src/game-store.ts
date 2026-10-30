@@ -1,8 +1,8 @@
-import { GameSchema, type Game } from '../../../.stage/game/src/contract.js';
+import { GameSchema, type Game } from '../game/src/contract.js';
 import type {
   GameStore,
   PlayResult,
-} from '../../../.stage/game/server/game-store.js';
+} from '../game/server/game-store.js';
 import type { GameObject } from './game-object.js';
 
 // The game's store seam (GameStore) over Durable Objects: one object per game, addressed by the

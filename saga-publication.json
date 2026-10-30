@@ -1,67 +1,97 @@
 {
   "format": "saga-publication/1",
   "name": "saga-tic-tac-toe",
-  "version": "0.1.0",
-  "description": "Play tic-tac-toe against your AI assistant on a board inside the conversation. A hosted SAGA A2UI example.",
+  "version": "0.1.1",
+  "description": "Play tic-tac-toe against your AI assistant on a board inside the conversation. A hosted saga a2ui example.",
   "publisher": {
-    "name": "MachineWisdom",
+    "name": "Machine Wisdom",
     "url": "https://saga-ai.dev/"
   },
   "homepage": "https://github.com/MachineWisdomAI/saga-a2ui-examples",
   "repository": "https://github.com/MachineWisdomAI/saga-a2ui-examples",
   "license": "Apache-2.0",
-  "keywords": ["tic-tac-toe", "game", "saga-a2ui", "example"],
+  "keywords": [
+    "tic-tac-toe",
+    "game",
+    "saga-a2ui",
+    "example"
+  ],
   "listing": {
-    "displayName": "SAGA Tic Tac Toe",
+    "displayName": "saga Tic Tac Toe",
     "shortDescription": "Play tic-tac-toe in chat",
-    "longDescription": "A game of tic-tac-toe between you (X) and your assistant (O), on a board shown inside the conversation. Click a square to move; the assistant answers by playing the same game. It needs no account. A game is kept for 24 hours under an unguessable identifier and nothing else about you is stored. A free example built with SAGA A2UI.",
+    "longDescription": "A game of tic-tac-toe between you (X) and your assistant (O), on a board shown inside the conversation. Click a square to move; the assistant answers by playing the same game. It needs no account. A game is kept for 24 hours under an unguessable identifier and nothing else about you is stored. A free example built with saga a2ui.",
     "category": "Games",
-    "capabilities": ["Start a game", "Show a game", "Read a game", "Play a move"],
+    "capabilities": [
+      "Start a game",
+      "Show a game",
+      "Read a game",
+      "Play a move"
+    ],
     "websiteURL": "https://github.com/MachineWisdomAI/saga-a2ui-examples",
     "supportURL": "https://github.com/MachineWisdomAI/saga-a2ui-examples/issues",
     "privacyPolicyURL": "https://github.com/MachineWisdomAI/saga-a2ui-examples/blob/main/docs/tic-tac-toe-data-handling.md",
     "termsOfServiceURL": "https://github.com/MachineWisdomAI/saga-a2ui-examples/blob/main/docs/tic-tac-toe-data-handling.md#terms-of-use",
-    "defaultPrompt": ["Start a game of tic-tac-toe with me"],
+    "defaultPrompt": [
+      "Start a game of tic-tac-toe with me"
+    ],
     "brandColor": "#0e9f4f",
     "brandColorDark": "#39ff88"
   },
   "claude": {
     "connector": {
-      "name": "SAGA Tic Tac Toe",
+      "name": "saga Tic Tac Toe",
       "oneLiner": "Play tic-tac-toe against Claude on a board inside the conversation.",
-      "description": "A game of tic-tac-toe between you (X) and Claude (O). The board appears inside the conversation: click a square to move, and Claude answers by playing the same game. No account is needed. A game is kept for 24 hours under an unguessable identifier and nothing else about you is stored. A free example built with SAGA A2UI.",
-      "categories": ["Games"],
+      "description": "A game of tic-tac-toe between you (X) and Claude (O). The board appears inside the conversation: click a square to move, and Claude answers by playing the same game. No account is needed. A game is kept for 24 hours under an unguessable identifier and nothing else about you is stored. A free example built with saga a2ui.",
+      "categories": [
+        "Games"
+      ],
       "slug": "saga-tic-tac-toe",
       "documentationURL": "https://github.com/MachineWisdomAI/saga-a2ui-examples#use-the-hosted-game",
       "privacyPolicyURL": "https://github.com/MachineWisdomAI/saga-a2ui-examples/blob/main/docs/tic-tac-toe-data-handling.md",
-      "support": { "url": "https://github.com/MachineWisdomAI/saga-a2ui-examples/issues" },
+      "support": {
+        "url": "https://github.com/MachineWisdomAI/saga-a2ui-examples/issues"
+      },
       "icon": "apps/tic-tac-toe/public/tic-tac-toe/icons/logo-light.png",
       "useCases": {
-        "primary": ["Play a game of tic-tac-toe with Claude."],
+        "primary": [
+          "Play a game of tic-tac-toe with Claude."
+        ],
         "prerequisites": "Nothing: no account, sign-in or other setup beyond adding the connector.",
         "access": "read-write"
       },
-      "authentication": { "mode": "none" },
+      "authentication": {
+        "mode": "none"
+      },
       "dataHandling": {
         "apiOwnership": "first-party",
         "personalHealthData": false,
         "sponsoredContent": false
       },
-      "allowedLinkUris": ["https://saga-ai.dev"]
+      "allowedLinkUris": [
+        "https://saga-ai.dev"
+      ]
     },
     "pluginBundle": {
       "repository": "https://github.com/MachineWisdomAI/saga-a2ui-examples",
-      "skills": ["plugins/saga-tic-tac-toe/skills/play-tic-tac-toe"],
+      "skills": [
+        "plugins/saga-tic-tac-toe/skills/play-tic-tac-toe"
+      ],
       "readme": "plugins/saga-tic-tac-toe/README.md",
       "license": "LICENSE"
     }
   },
   "build": {
     "directory": ".stage/publication",
-    "views": ["new-game.html", "show-game.html"]
+    "views": [
+      "new-game.html",
+      "show-game.html"
+    ]
   },
   "endpoint": {
     "url": "https://examples.saga-ai.dev/tic-tac-toe/mcp",
-    "expectedServer": { "name": "saga-tic-tac-toe", "version": "0.0.0" }
+    "expectedServer": {
+      "name": "saga-tic-tac-toe",
+      "version": "0.0.0"
+    }
   }
 }

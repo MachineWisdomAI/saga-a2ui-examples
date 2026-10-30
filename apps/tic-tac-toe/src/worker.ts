@@ -2,7 +2,7 @@ import { createMcpFetchApp } from '@saga-a2ui/react-mcp-stack/server/http';
 import {
   createGameServer,
   prepareBoardViews,
-} from '../../../.stage/game/server/operations.js';
+} from '../game/server/operations.js';
 import { brandIcons, MCP_PATH, readSettings, type Settings } from './config.js';
 import { createDurableGameStore } from './game-store.js';
 import { GameObject } from './game-object.js';

@@ -2,7 +2,8 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ICON_DIGESTS as expected } from './icon-digests.mjs';
-import { root } from './sdk-archive.mjs';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
 
 // Checks that the dragon icon files are the SDK's selected artwork, byte for byte. The digests
 // are in icon-digests.mjs.
