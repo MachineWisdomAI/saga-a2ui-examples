@@ -1,4 +1,4 @@
-// The connector and card dragon icons are the SDK's operator-selected second edition of the SAGA
+// The connector and card dragon icons are the SDK's operator-selected second edition of the saga
 // dragon artwork, used unchanged: head crops for the composer icons (128 px, transparent) and the
 // full mark on a solid tile for the logos (512 px). Their digests are those recorded in the SDK's
 // assets/brand/plugin/README.md; a replacement is a deliberate change to this table and to the

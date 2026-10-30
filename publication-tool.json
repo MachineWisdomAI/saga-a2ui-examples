@@ -1,0 +1,5 @@
+{
+  "repository": "MachineWisdomAI/saga-a2ui",
+  "revision": "522d613c280565071497bfcbd221ce277a85b28b",
+  "purpose": "SDK saga publish CLI only; not an application build input"
+}

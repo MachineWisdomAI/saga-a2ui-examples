@@ -2,9 +2,9 @@ import { DurableObject } from 'cloudflare:workers';
 import {
   GameSchema,
   type Game,
-} from '../../../.stage/game/src/contract.js';
-import { applyMove, emptyGame, type Move } from '../../../.stage/game/server/rules.js';
-import type { PlayResult } from '../../../.stage/game/server/game-store.js';
+} from '../game/src/contract.js';
+import { applyMove, emptyGame, type Move } from '../game/server/rules.js';
+import type { PlayResult } from '../game/server/game-store.js';
 
 // One Durable Object holds one game. Its SQLite storage has a single row: the game's state and the
 // moment it expires. Expiry is fixed at creation (creation + 24 hours); no read, move or restart

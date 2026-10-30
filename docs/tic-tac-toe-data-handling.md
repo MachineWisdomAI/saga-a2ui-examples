@@ -1,6 +1,6 @@
 # Tic Tac Toe: data handling
 
-This describes the hosted Tic Tac Toe example at `https://examples.saga-ai.dev/tic-tac-toe/mcp`, operated by MachineWisdom. The source that runs it is in this repository, so you can check each statement against [`apps/tic-tac-toe`](../apps/tic-tac-toe).
+This describes the hosted Tic Tac Toe example at `https://examples.saga-ai.dev/tic-tac-toe/mcp`, operated by Machine Wisdom. The source that runs it is in this repository, so you can check each statement against [`apps/tic-tac-toe`](../apps/tic-tac-toe).
 
 ## What it stores
 

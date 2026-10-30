@@ -1,6 +1,6 @@
 import '@saga-a2ui/react-mcp-stack/attribution.css';
-import '../../../.stage/game/src/index.css';
-import { startView } from '../../../.stage/game/src/view.js';
+import '../game/src/index.css';
+import { startView } from '../game/src/view.js';
 import { showHostTheme } from './brand.js';
 
 // The card's entry. It does what the pinned SDK game's own entry does (the same styles, then the

@@ -2,7 +2,7 @@
 
 ## Project
 
-Public repository of hosted SAGA A2UI example applications and the Claude plugin marketplace. It is not the SDK: SDK-owned code changes go to `MachineWisdomAI/saga-a2ui`. Read [README.md](README.md) first.
+Public repository of hosted saga a2ui example applications and the Claude plugin marketplace. It is not the SDK: SDK-owned code changes go to `MachineWisdomAI/saga-a2ui`. Read [README.md](README.md) first.
 
 ## Shared Operating Rules
 
@@ -21,7 +21,8 @@ Public repository of hosted SAGA A2UI example applications and the Claude plugin
 ## Repo Notes
 
 - This repository is public. Keep private planning, ticket links, customer material and credentials out of commits, PRs and comments; PRs must stand alone.
-- The game's rules and view have one owner, the SDK. Never copy them here: change the SDK, then update the pin (`sdk-source.json`; see the README).
+- This repository owns the game's rules, contract, view, local development and hosted deployment. Both entrypoints import `apps/tic-tac-toe/game`; the SDK owns reusable packages and the tutorial.
+- Write saga a2ui and saga lowercase; use Machine Wisdom for company display names and MachineWisdomAI for the GitHub slug. Preserve code identifiers and explicitly marked historical observations.
 - Keep deployment bindings and settings (`wrangler.jsonc`, `src/config.ts`) separate from SDK delivery code.
 - Run `npm run check` before review. Source readiness, registry consumption, deployment and actual-host acceptance are separate claims; do not report one as another.
 - The dragon icon files are the SDK's artwork, used unchanged; a replacement is a deliberate change to `scripts/icon-digests.mjs` and the SDK's record together. The card shows them inside the page (`apps/tic-tac-toe/view`); the browser test checks the embedded bytes against those digests.

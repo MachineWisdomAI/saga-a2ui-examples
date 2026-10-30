@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { root } from './sdk-archive.mjs';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../', import.meta.url));
 
 // Writes the build directory that `saga publish check|prepare` reads (README: "Publish
 // preparation"). The Worker serves the one built board page under two view addresses,

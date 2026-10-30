@@ -1,11 +1,11 @@
 ---
 name: play-tic-tac-toe
-description: Play tic-tac-toe with the person against SAGA Tic Tac Toe's tools. Use when the person asks to start, continue, show or take a turn in a tic-tac-toe game.
+description: Play tic-tac-toe with the person against saga Tic Tac Toe's tools. Use when the person asks to start, continue, show or take a turn in a tic-tac-toe game.
 ---
 
 # Play tic-tac-toe
 
-The person plays X and moves first. You play O. The game is kept by the SAGA Tic Tac Toe connector's tools; do not track the board yourself.
+The person plays X and moves first. You play O. The game is kept by the saga Tic Tac Toe connector's tools; do not track the board yourself.
 
 1. To start, call `new_game`. It shows the board. Tell the person to click a square.
 2. A click on the board places X for the person and tells you in the conversation. Placing X yourself is only for a move the person tells you in words.

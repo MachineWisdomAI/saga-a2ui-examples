@@ -1,11 +1,11 @@
 {
   "name": "saga-a2ui-examples",
   "owner": {
-    "name": "MachineWisdom",
+    "name": "Machine Wisdom",
     "url": "https://saga-ai.dev/"
   },
   "metadata": {
-    "description": "Hosted SAGA A2UI example applications for Claude."
+    "description": "Hosted saga a2ui example applications for Claude."
   },
   "plugins": [
     {

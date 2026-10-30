@@ -2,18 +2,19 @@
   "name": "saga-a2ui-examples",
   "private": true,
   "license": "Apache-2.0",
-  "description": "Hosted SAGA A2UI example applications",
+  "description": "Example apps built with saga a2ui \u2014 interactive experiences inside AI assistants and agents, with source code and connection instructions.",
   "type": "module",
   "scripts": {
-    "stage": "node scripts/stage-sdk-source.mjs",
-    "build:view": "npm run stage && node scripts/build-view.mjs",
-    "typecheck": "npm run build:view && tsc -p tsconfig.json && tsc -p tsconfig.browser.json",
+    "build:view": "node scripts/build-view.mjs",
+    "typecheck": "npm run build:view && tsc -p tsconfig.json && tsc -p tsconfig.browser.json && npm run typecheck -w saga-tic-tac-toe-example",
     "test": "npm run build:view && vitest run",
     "build": "npm run build:view && wrangler deploy --dry-run --outdir dist -c apps/tic-tac-toe/wrangler.jsonc",
     "test:browser": "npm run build:view && playwright test",
-    "check": "node scripts/check-icons.mjs && npm run typecheck && vitest run && npm run test:browser && npm run build",
-    "pin:update": "node scripts/stage-sdk-source.mjs --update",
-    "stage:publication": "node scripts/stage-publication.mjs"
+    "check": "node scripts/check-brand.mjs && node scripts/check-icons.mjs && npm run typecheck && npm run test:game && vitest run && npm run test:browser && npm run build",
+    "stage:publication": "node scripts/stage-publication.mjs",
+    "build:local": "npm run build -w saga-tic-tac-toe-example",
+    "start:local": "npm run start -w saga-tic-tac-toe-example",
+    "test:game": "npm run build:local && vitest run --config vitest.game.config.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",
@@ -41,5 +42,9 @@
   },
   "engines": {
     "node": ">=22.12.0"
-  }
+  },
+  "homepage": "https://saga-ai.dev/",
+  "workspaces": [
+    "apps/tic-tac-toe/game"
+  ]
 }
