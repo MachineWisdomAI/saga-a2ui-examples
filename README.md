@@ -23,13 +23,14 @@ Installing adds the endpoint above and a short skill. The marketplace is [`.clau
 
 **ChatGPT on the web, direct URL.** Open **Plugins → + → Add custom MCP server**, name it **SAGA Tic Tac Toe**, enter the endpoint, and choose **No authentication**. Add and connect it, then select it in a new chat and ask to start a game. This is manual custom-MCP setup; directory approval is not required and is not claimed.
 
-What has been observed on the hosts (a record of limits, not a guarantee). These checks used the first edition of the dragon artwork; the second edition is in the source but has not been deployed, packaged or checked on a host:
+What has been observed on the hosts (a record of limits, not a guarantee). The first four observations below were made with the first edition of the dragon artwork; the fifth records the second edition, now deployed:
 
 - Claude on the web, with the direct connector: a game was played to a nine-move draw and the final card showed correctly, with the SAGA dragon and the credit, in the light and dark appearances. The first display of a card sometimes failed and recovered with the host's retry button; one card also failed to display after a turn. A click on the board puts the person's move in the message box, and **Send** is then required. Claude's connector list showed a placeholder letter, not the dragon, beside the connector.
 - ChatGPT on the web, with a custom plugin using the uploaded dragon: the dragon showed in the card and, separately, beside the plugin mention and tool row in both themes, and a completed game reopened correctly. A card in the dark theme timed out once and one **Try again** recovered it; a click on the board then sent the person's move automatically, the assistant played O, and the card updated. An older card did not load in a chat reopened after switching theme.
 - Claude on the web, through this marketplace: adding the marketplace from the repository (the path above), choosing **Sync** and adding the plugin worked, and the **saga-tic-tac-toe** `0.1.0` plugin was enabled, so the marketplace is not limited to Claude Desktop. Its Connectors tab listed **SAGA Tic Tac Toe** as connected and custom; the existing connection for the same endpoint was reused. Using the plugin's namespaced skill in a chat started a game with `new_game`. The first card failed to display and one **Retry** recovered an interactive board. A click on the centre square then **Send** put the person's X in, Claude played O in the top-left, and the same card updated with the credit and the selected dragon. The connector row there still showed the placeholder letter. This was checked on the web only, not in Claude Code or Claude Desktop.
 - ChatGPT on the web: a game was played to a nine-move draw, and the completed game's card (`show_game`) first failed to display and recovered with one **Retry**, showing the final board correctly.
-- First-load reliability is not established on either host: on both, a card has sometimes needed one retry before it displayed. Retry has so far recovered it, and no cause in the game has been identified.
+- Second edition of the artwork, deployed as Worker version `e89a6cb8-ee7b-4d6d-812d-3d9f84f6b8f6` from commit `9403b8fde7f7b1490029e51238f502d83ea3756a`: in both the Claude and the ChatGPT web hosts the card displayed the new embedded light and dark PNGs, and their hashes matched the ones in `scripts/icon-digests.mjs`, each after one supported **Retry** of the card. This does not mean every connector icon changed: Claude's connector row still shows the placeholder letter, and the existing ChatGPT plugin keeps the dragon uploaded earlier, because it was uploaded to that host and no supported way to replace it was found. Only the card and the files this Worker serves carry the new artwork.
+- First-load and reload reliability is not established on either host: on both, a card has sometimes needed one retry before it displayed. Retry has so far recovered it, and no cause in the game has been identified.
 
 ### Publication preparation
 
@@ -40,7 +41,7 @@ npx tsx scripts/saga.ts publish check --target chatgpt --release /path/to/saga-p
 npx tsx scripts/saga.ts publish check --target claude  --release /path/to/saga-publication.json
 ```
 
-For this deployment the ChatGPT check is `ready`. The Claude check reports only what the Claude directory submission asks for and this repository does not hold: a review contact and carousel screenshots. They are not needed for the marketplace plugin or for direct setup, and no external directory submission is made. Checks and prepared files establish neither installation nor distribution; the registry state of the SDK packages is separate (see Release constraint).
+For this deployment the ChatGPT check is `ready`. The Claude check reports only what the Claude directory submission asks for and this repository does not hold: a review contact and carousel screenshots. They are not needed for the marketplace plugin or for direct setup, and no external directory submission is made. Checks and prepared files establish neither installation nor distribution; the SDK packages come from the npm registry (see Installing dependencies).
 
 ### Where the code comes from
 
@@ -79,11 +80,15 @@ Worker tests run in the real Workers runtime (`workerd`, through the Cloudflare 
 
 1. Run `npm run pin:update -- <commit>`. It records the commit and the archive digest.
 2. Set `sdkVersion` in `sdk-source.json` and the dependency versions in `package.json` to the ones in the staged game's `package.json`; `npm run stage` fails and lists any disagreement.
-3. Run `npm run check` and commit the changed files.
+3. Run `npm run check` and commit the changed files, including `package-lock.json` when dependencies changed.
 
-### Release constraint
+### Installing dependencies
 
-The game needs `@saga-a2ui/react-mcp-stack` `0.11.0-rc.1`, which is **not yet published to the npm registry** (the `latest` and `next` tags predate its exports). Until it is, `npm run qualify:sdk` installs the five SDK packages packed from the pinned revision; CI does the same. That is local qualification, not registry consumption. After publication, replace that step with `npm ci` and commit a lockfile.
+Set up with `npm ci`, which installs from the npm registry and the committed `package-lock.json`; CI does the same. The game needs `@saga-a2ui/react-mcp-stack` `0.11.0-rc.1`, published under the registry's `next` tag (the `latest` tag is still an earlier release and is not what this repository uses). The lockfile resolves the five SDK packages the application uses (`core`, `components`, `mcp`, `react` and `react-mcp-stack`) to that exact version from the registry, with their integrity hashes. No local tarball, file path or `--legacy-peer-deps` is involved.
+
+Two sources are separate on purpose. The packages come from the registry through the lockfile. The game's own source is the pinned SDK archive described above, staged at build time. `npm run pin:update` moves the second; changing the first is a `package.json` and lockfile change.
+
+The lockfile is generated with npm 11 or newer: the npm 10 bundled with Node 22 fails to resolve this dependency tree when it creates a lockfile from nothing, though it installs from an existing lockfile with `npm ci`.
 
 ### Deployment
 

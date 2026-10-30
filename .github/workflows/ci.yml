@@ -23,11 +23,8 @@ jobs:
           node-version-file: .nvmrc
       - name: Validate tracked Git LFS pointers
         run: python3 scripts/check-lfs.py
-      # The SDK 0.11.0-rc.1 packages are not on the npm registry yet, so the pinned revision's
-      # packed packages stand in for them (README: "Release constraint"). Replace this step with
-      # `npm ci` once they are published and a lockfile is committed.
-      - name: Install dependencies, with the pinned SDK packed locally
-        run: node scripts/qualify-sdk-packages.mjs
+      - name: Install dependencies from the registry and the lockfile
+        run: npm ci
       - name: Install the browser for the rendered-card tests
         run: npx playwright install --with-deps chromium
       - name: Check
