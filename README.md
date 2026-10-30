@@ -10,14 +10,14 @@ A game of tic-tac-toe between a person (X) and an AI assistant (O), served as a 
 
 The game runs at **`https://examples.saga-ai.dev/tic-tac-toe/mcp`**. It needs no account or sign-in. What it stores, and for how long, is in [data handling](docs/tic-tac-toe-data-handling.md). Both hosts need access to custom MCP connections on the web; a managed workspace may need an administrator to enable it.
 
-**Claude, through the marketplace.** In Claude Code, add this repository's marketplace and install the plugin, which adds the endpoint above and a short skill:
+**Claude, through the marketplace.** On Claude on the web, open **Customize → Plugins → Add plugin → Add marketplace → Add from a repository**, enter `MachineWisdomAI/saga-a2ui-examples` (a GitHub owner/repo or a Git URL) and choose **Sync**, then install **saga-tic-tac-toe**. In Claude Code, the equivalent commands are:
 
 ```text
 /plugin marketplace add MachineWisdomAI/saga-a2ui-examples
 /plugin install saga-tic-tac-toe@saga-a2ui-examples
 ```
 
-The marketplace is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json); the plugin is [`plugins/saga-tic-tac-toe`](plugins/saga-tic-tac-toe). Its `.claude-plugin/plugin.json` and `.mcp.json` are the files `saga publish prepare --target claude` produces from [`saga-publication.json`](saga-publication.json); no second packager is used. The plugin is not a Claude Desktop extension, and installing it in Claude Code is not a claim about Claude on the web, which uses the direct setup below.
+Installing adds the endpoint above and a short skill. The marketplace is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json); the plugin is [`plugins/saga-tic-tac-toe`](plugins/saga-tic-tac-toe). Its `.claude-plugin/plugin.json` and `.mcp.json` are the files `saga publish prepare --target claude` produces from [`saga-publication.json`](saga-publication.json); no second packager is used. The plugin is not a Claude Desktop extension.
 
 **Claude on the web, direct URL.** Open **Customize → Connectors → Add custom connector**, name it **SAGA Tic Tac Toe**, enter the endpoint, and choose **No sign-in** when offered. Connect it, enable it from the connectors menu in a new chat and ask Claude to start a game.
 
@@ -25,9 +25,10 @@ The marketplace is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplac
 
 What has been observed on the hosts (a record of limits, not a guarantee):
 
-- Claude on the web, with the direct connector: a game was played to a nine-move draw and the final card showed correctly, with the SAGA dragon and the credit, in the light and dark appearances. The first display of a card sometimes failed and recovered with the host's retry button; one card also failed to display after a turn. Claude's connector list showed a placeholder letter, not the dragon, beside the connector.
-- ChatGPT on the web, with a custom plugin: the dragon uploaded for the plugin showed beside its mention and tool row, and a completed game reopened correctly in the light theme. After switching to the dark theme, an older card did not load in a reopened chat, and a new card was still loading when last observed. First-load reliability is not established on either host.
-- The Claude marketplace installation itself has not yet been verified on a current Claude surface.
+- Claude on the web, with the direct connector: a game was played to a nine-move draw and the final card showed correctly, with the SAGA dragon and the credit, in the light and dark appearances. The first display of a card sometimes failed and recovered with the host's retry button; one card also failed to display after a turn. A click on the board puts the person's move in the message box, and **Send** is then required. Claude's connector list showed a placeholder letter, not the dragon, beside the connector.
+- ChatGPT on the web, with a custom plugin using the uploaded dragon: the dragon showed in the card and, separately, beside the plugin mention and tool row in both themes, and a completed game reopened correctly. A card in the dark theme timed out once and one **Try again** recovered it; a click on the board then sent the person's move automatically, the assistant played O, and the card updated. An older card did not load in a chat reopened after switching theme.
+- Claude on the web offers adding a marketplace from a GitHub repository (the path above), so the marketplace is not limited to Claude Desktop. Installing this marketplace's plugin from the merged repository, and playing through it, is checked separately.
+- First-load reliability is not established on either host.
 
 ### Publication preparation
 
