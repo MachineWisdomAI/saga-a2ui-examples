@@ -1,6 +1,7 @@
 {
   "name": "saga-a2ui-examples",
   "private": true,
+  "license": "Apache-2.0",
   "description": "Hosted SAGA A2UI example applications",
   "type": "module",
   "scripts": {
@@ -12,7 +13,8 @@
     "test:browser": "npm run build:view && playwright test",
     "check": "node scripts/check-icons.mjs && npm run typecheck && vitest run && npm run test:browser && npm run build",
     "pin:update": "node scripts/stage-sdk-source.mjs --update",
-    "qualify:sdk": "node scripts/qualify-sdk-packages.mjs"
+    "qualify:sdk": "node scripts/qualify-sdk-packages.mjs",
+    "stage:publication": "node scripts/stage-publication.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.1",
