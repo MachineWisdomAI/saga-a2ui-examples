@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "saga-tic-tac-toe": {
+      "type": "http",
+      "url": "https://examples.saga-ai.dev/tic-tac-toe/mcp"
+    }
+  }
+}

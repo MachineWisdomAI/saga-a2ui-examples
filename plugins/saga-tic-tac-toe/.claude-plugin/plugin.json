@@ -1,0 +1,18 @@
+{
+  "name": "saga-tic-tac-toe",
+  "version": "0.1.0",
+  "description": "Play tic-tac-toe against your AI assistant on a board inside the conversation. A hosted SAGA A2UI example.",
+  "author": {
+    "name": "MachineWisdom",
+    "url": "https://saga-ai.dev/"
+  },
+  "homepage": "https://github.com/MachineWisdomAI/saga-a2ui-examples",
+  "repository": "https://github.com/MachineWisdomAI/saga-a2ui-examples",
+  "license": "Apache-2.0",
+  "keywords": [
+    "tic-tac-toe",
+    "game",
+    "saga-a2ui",
+    "example"
+  ]
+}

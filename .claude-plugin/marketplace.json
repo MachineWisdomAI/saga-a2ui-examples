@@ -1,0 +1,20 @@
+{
+  "name": "saga-a2ui-examples",
+  "owner": {
+    "name": "MachineWisdom",
+    "url": "https://saga-ai.dev/"
+  },
+  "metadata": {
+    "description": "Hosted SAGA A2UI example applications for Claude."
+  },
+  "plugins": [
+    {
+      "name": "saga-tic-tac-toe",
+      "source": "./plugins/saga-tic-tac-toe",
+      "description": "Play tic-tac-toe against Claude on a board inside the conversation. Uses the hosted example at https://examples.saga-ai.dev/tic-tac-toe/mcp.",
+      "category": "games",
+      "homepage": "https://github.com/MachineWisdomAI/saga-a2ui-examples",
+      "license": "Apache-2.0"
+    }
+  ]
+}
