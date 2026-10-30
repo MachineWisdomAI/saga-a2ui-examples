@@ -48,6 +48,9 @@ execFileSync(
     '--no-save',
     '--no-package-lock',
     '--ignore-scripts',
+    // npm 10 (bundled with the pinned Node 22) fails to resolve tarballs that depend on each other
+    // without this; every peer the SDK needs is a direct dependency in package.json.
+    '--legacy-peer-deps',
     ...tarballs,
   ],
   { cwd: root, stdio: 'inherit' },
