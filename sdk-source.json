@@ -1,0 +1,7 @@
+{
+  "repository": "MachineWisdomAI/saga-a2ui",
+  "revision": "522d613c280565071497bfcbd221ce277a85b28b",
+  "tarSha256": "272f301eff00f4c8fbc9de12049b1e70aa2bb59fa23b1ff9bfcff5c0ca6510a4",
+  "sdkVersion": "0.11.0-rc.1",
+  "gamePath": "examples/tic-tac-toe"
+}
