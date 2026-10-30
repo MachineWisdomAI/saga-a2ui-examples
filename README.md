@@ -23,12 +23,13 @@ Installing adds the endpoint above and a short skill. The marketplace is [`.clau
 
 **ChatGPT on the web, direct URL.** Open **Plugins → + → Add custom MCP server**, name it **SAGA Tic Tac Toe**, enter the endpoint, and choose **No authentication**. Add and connect it, then select it in a new chat and ask to start a game. This is manual custom-MCP setup; directory approval is not required and is not claimed.
 
-What has been observed on the hosts (a record of limits, not a guarantee):
+What has been observed on the hosts (a record of limits, not a guarantee). These checks used the first edition of the dragon artwork; the second edition is in the source but has not been deployed, packaged or checked on a host:
 
 - Claude on the web, with the direct connector: a game was played to a nine-move draw and the final card showed correctly, with the SAGA dragon and the credit, in the light and dark appearances. The first display of a card sometimes failed and recovered with the host's retry button; one card also failed to display after a turn. A click on the board puts the person's move in the message box, and **Send** is then required. Claude's connector list showed a placeholder letter, not the dragon, beside the connector.
 - ChatGPT on the web, with a custom plugin using the uploaded dragon: the dragon showed in the card and, separately, beside the plugin mention and tool row in both themes, and a completed game reopened correctly. A card in the dark theme timed out once and one **Try again** recovered it; a click on the board then sent the person's move automatically, the assistant played O, and the card updated. An older card did not load in a chat reopened after switching theme.
-- Claude on the web offers adding a marketplace from a GitHub repository (the path above), so the marketplace is not limited to Claude Desktop. Installing this marketplace's plugin from the merged repository, and playing through it, is checked separately.
-- First-load reliability is not established on either host.
+- Claude on the web, through this marketplace: adding the marketplace from the repository (the path above), choosing **Sync** and adding the plugin worked, and the **saga-tic-tac-toe** `0.1.0` plugin was enabled, so the marketplace is not limited to Claude Desktop. Its Connectors tab listed **SAGA Tic Tac Toe** as connected and custom; the existing connection for the same endpoint was reused. Using the plugin's namespaced skill in a chat started a game with `new_game`. The first card failed to display and one **Retry** recovered an interactive board. A click on the centre square then **Send** put the person's X in, Claude played O in the top-left, and the same card updated with the credit and the selected dragon. The connector row there still showed the placeholder letter. This was checked on the web only, not in Claude Code or Claude Desktop.
+- ChatGPT on the web: a game was played to a nine-move draw, and the completed game's card (`show_game`) first failed to display and recovered with one **Retry**, showing the final board correctly.
+- First-load reliability is not established on either host: on both, a card has sometimes needed one retry before it displayed. Retry has so far recovered it, and no cause in the game has been identified.
 
 ### Publication preparation
 
@@ -53,7 +54,7 @@ The game's rules, operations, contract and board view are the SDK's [tic-tac-toe
 | `apps/tic-tac-toe/src/game-store.ts` | The game's `GameStore` seam over those objects. |
 | `apps/tic-tac-toe/src/config.ts`, `wrangler.jsonc` | Bindings, route, allowed hosts and connector icons: this deployment's settings, separate from SDK delivery code. |
 | `apps/tic-tac-toe/view` | The card's page: the dragon above the staged game, started through the game's own `startView`. The dragon follows the host's theme, which `startView` hands over through the stack's typed `hostContext` callback; nothing here reads host messages. |
-| `apps/tic-tac-toe/public/tic-tac-toe/icons` | The SDK's selected dragon artwork, light and dark, unchanged (digests in `scripts/icon-digests.mjs`, checked by `npm run check`). The connector announces all four files; the card embeds the two small ones. |
+| `apps/tic-tac-toe/public/tic-tac-toe/icons` | The SDK's operator-selected second edition of the dragon artwork, light and dark, unchanged: head crops for the composer icons and the full mark on a tile for the logos (digests in `scripts/icon-digests.mjs`, checked by `npm run check`). The connector announces all four files; the card embeds the two small ones. |
 
 ### Behavior
 
