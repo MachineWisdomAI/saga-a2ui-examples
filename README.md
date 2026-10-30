@@ -23,7 +23,7 @@ Installing adds the endpoint above and a short skill. The marketplace is [`.clau
 
 **ChatGPT on the web, direct URL.** Open **Plugins → + → Add custom MCP server**, name it **SAGA Tic Tac Toe**, enter the endpoint, and choose **No authentication**. Add and connect it, then select it in a new chat and ask to start a game. This is manual custom-MCP setup; directory approval is not required and is not claimed.
 
-What has been observed on the hosts (a record of limits, not a guarantee):
+What has been observed on the hosts (a record of limits, not a guarantee). These checks used the first edition of the dragon artwork; the second edition is in the source but has not been deployed, packaged or checked on a host:
 
 - Claude on the web, with the direct connector: a game was played to a nine-move draw and the final card showed correctly, with the SAGA dragon and the credit, in the light and dark appearances. The first display of a card sometimes failed and recovered with the host's retry button; one card also failed to display after a turn. A click on the board puts the person's move in the message box, and **Send** is then required. Claude's connector list showed a placeholder letter, not the dragon, beside the connector.
 - ChatGPT on the web, with a custom plugin using the uploaded dragon: the dragon showed in the card and, separately, beside the plugin mention and tool row in both themes, and a completed game reopened correctly. A card in the dark theme timed out once and one **Try again** recovered it; a click on the board then sent the person's move automatically, the assistant played O, and the card updated. An older card did not load in a chat reopened after switching theme.
