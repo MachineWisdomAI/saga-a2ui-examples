@@ -1,0 +1,42 @@
+{
+  "name": "saga-a2ui-examples",
+  "private": true,
+  "description": "Hosted SAGA A2UI example applications",
+  "type": "module",
+  "scripts": {
+    "stage": "node scripts/stage-sdk-source.mjs",
+    "build:view": "npm run stage && node scripts/build-view.mjs",
+    "typecheck": "npm run build:view && tsc -p tsconfig.json",
+    "test": "npm run build:view && vitest run",
+    "build": "npm run build:view && wrangler deploy --dry-run --outdir dist -c apps/tic-tac-toe/wrangler.jsonc",
+    "check": "node scripts/check-icons.mjs && npm run typecheck && vitest run && npm run build",
+    "pin:update": "node scripts/stage-sdk-source.mjs --update",
+    "qualify:sdk": "node scripts/qualify-sdk-packages.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.1",
+    "@saga-a2ui/react-mcp-stack": "0.11.0-rc.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.11",
+    "@cloudflare/workers-types": "5.20261030.1",
+    "@modelcontextprotocol/client": "2.3.1",
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.4",
+    "vite-plugin-singlefile": "2.3.3",
+    "vitest": "4.1.12",
+    "wrangler": "4.156.0"
+  },
+  "overrides": {
+    "@a2ui/markdown-it": "0.2.1"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

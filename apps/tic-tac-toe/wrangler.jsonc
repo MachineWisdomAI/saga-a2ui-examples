@@ -1,0 +1,33 @@
+{
+  // Bindings and configuration of the hosted Tic Tac Toe Worker. SDK delivery code never reads
+  // this file; src/config.ts is the one place that turns these values into application settings.
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "saga-examples-tic-tac-toe",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-07-01",
+  // The MCP SDK, and the SDK's view identity hash, use Node's crypto.
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+
+  // Cloudflare provisions DNS and TLS for a Custom Domain. The application answers only the exact
+  // path /tic-tac-toe/mcp, plus the icon files below; every other path is a 404.
+  "routes": [{ "pattern": "examples.saga-ai.dev", "custom_domain": true }],
+
+  // The dragon connector icons (unchanged SDK artwork), served at /tic-tac-toe/icons/*.
+  "assets": { "directory": "./public" },
+
+  // One SQLite-backed Durable Object per game: Workers Free only offers SQLite-backed objects.
+  "durable_objects": {
+    "bindings": [{ "name": "GAMES", "class_name": "GameObject" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameObject"] }],
+
+  "vars": {
+    // Host names the Worker answers to (comma separated, no scheme or port). A request for any
+    // other Host or Origin is refused before any game code runs.
+    "ALLOWED_HOSTS": "examples.saga-ai.dev",
+    // Where the icon files are served from, as announced to hosts.
+    "PUBLIC_ORIGIN": "https://examples.saga-ai.dev"
+  }
+}
