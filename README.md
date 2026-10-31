@@ -10,7 +10,7 @@ Example apps built with saga a2ui — interactive experiences inside AI assistan
 | Tutorial | [Build tic-tac-toe with React](https://github.com/MachineWisdomAI/saga-a2ui/blob/main/docs/build-tic-tac-toe-with-react.md) |
 | MCP endpoint | https://examples.saga-ai.dev/tic-tac-toe/mcp |
 
-The game credits the framework through **Built with saga a2ui**, linking to the framework website. The website's GitHub destination is the SDK repository; this repository owns the application.
+The game credits the framework through **Built with saga-a2ui, learn how to build your Saga.** The framework name opens [the website](https://saga-ai.dev/); **how to build your Saga** opens [the tic-tac-toe tutorial](https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react), which uses the `0.11.0-rc.1` prerelease. The website's GitHub destination is the SDK repository; this repository owns the application.
 
 ## Tic Tac Toe (`apps/tic-tac-toe`)
 
@@ -83,7 +83,7 @@ This builds the local game with Vite and starts its Node MCP server. Its bounded
 - Creation stores the expiry, **creation plus 24 hours**, and schedules one cleanup alarm for it. Reads, moves, polling and cold starts never move it.
 - At or after the expiry every operation reports the game unavailable, even if the alarm is late. The alarm deletes all storage and the alarm itself without any visitor; running cleanup again is harmless and an expired or never-issued ID is never recreated. Only `new_game` creates an ID.
 - A move names `expectedMoveNumber`; the check and write happen in one synchronous step in the game's object, so of two competing moves only one is played and the other is refused with the current game.
-- The card shows the saga dragon (light or dark to match the host's theme, the SDK's file unchanged and embedded in the page) and the removable "Built with saga a2ui" credit (linked to `https://saga-ai.dev/` through the host) during play, after the game and beside recoverable errors. Its catalog and layout identifier is `https://saga-a2ui.dev/catalogs/tic-tac-toe/board/v1`, a name that is never fetched.
+- The card shows the saga dragon (light or dark to match the host's theme, the SDK's file unchanged and embedded in the page) and the removable "Built with saga-a2ui, learn how to build your Saga." credit (the framework name and tutorial open through the host) during play, after the game and beside recoverable errors. Its catalog and layout identifier is `https://saga-a2ui.dev/catalogs/tic-tac-toe/board/v1`, a name that is never fetched.
 
 ### Commands
 

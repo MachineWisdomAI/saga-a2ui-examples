@@ -153,7 +153,15 @@ function createCredit(
     { name: 'Credit', schema: z.object({}).strict() },
     () => (
       <footer className="credit">
-        <SagaAttribution links={links()} />
+        <SagaAttribution links={links()} name="saga-a2ui" />
+        {', '}
+        <SagaAttribution
+          links={links()}
+          prefix="learn"
+          name="how to build your Saga"
+          href="https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react"
+        />
+        {'.'}
       </footer>
     ),
   );
