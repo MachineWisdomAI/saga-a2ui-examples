@@ -18,7 +18,7 @@ This describes the hosted Tic Tac Toe example at `https://examples.saga-ai.dev/t
 
 - **Your assistant's host (Claude or ChatGPT)** sends the tool calls and shows the board. Its handling of your conversation is governed by that host's terms and privacy policy, not by this one.
 - **Cloudflare** hosts the Worker and its storage. Like any host, it processes requests (such as network addresses) to deliver and protect the service, under [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/).
-- **The board** is one self-contained page: its script, styles and dragon artwork are inside it. Choosing "Built with saga a2ui" asks the host to open `https://saga-ai.dev/`.
+- **The board** is one self-contained page: its script, styles and dragon artwork are inside it. The credit reads "Built with saga-a2ui, learn how to build your Saga." Choosing **saga-a2ui** asks the host to open `https://saga-ai.dev/`; choosing **how to build your Saga** asks it to open `https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react`. Neither destination is fetched by the card itself.
 
 ## Terms of use
 

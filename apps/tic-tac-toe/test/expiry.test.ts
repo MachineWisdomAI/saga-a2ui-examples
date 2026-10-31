@@ -14,7 +14,10 @@ import {
 // Expiry and cleanup: a game lives exactly 24 hours from its creation, whatever happens to it, and
 // its object removes everything when the alarm arrives, with no visitor involved.
 
-const START = Date.UTC(2026, 9, 30, 12, 0, 0);
+// Miniflare's alarm scheduler follows real time even when the test fakes Date. Keep the
+// fixture ahead of it so alarms run only when explicitly delivered below, never automatically
+// because a fixed calendar date has passed.
+const START = Date.now() + 24 * HOUR;
 
 beforeEach(() => {
   vi.useFakeTimers({ toFake: ['Date'] });

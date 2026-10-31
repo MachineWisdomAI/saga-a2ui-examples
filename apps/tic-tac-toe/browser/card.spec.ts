@@ -27,6 +27,7 @@ const HOST_PAGE = `<!doctype html><html><body><iframe id="card" style="width:480
   const hostContext = { theme: new URLSearchParams(location.search).get('theme') };
   const game = JSON.parse(decodeURIComponent(new URLSearchParams(location.search).get('game') || 'null'));
   const send = (message) => card.contentWindow.postMessage({ jsonrpc: '2.0', ...message }, '*');
+  window.openedLinks = [];
   window.addEventListener('message', (event) => {
     if (event.source !== card.contentWindow) return;
     const { id, method } = event.data;
@@ -38,6 +39,10 @@ const HOST_PAGE = `<!doctype html><html><body><iframe id="card" style="width:480
       send({ id, result: { protocolVersion: '2026-01-26', hostInfo: { name: 'test-host', version: '0.0.0' }, hostCapabilities: { serverTools: {}, openLinks: {} }, hostContext } });
     else if (method === 'tools/call' && game)
       send({ id, result: { content: [], structuredContent: { game } } });
+    else if (method === 'ui/open-link') {
+      window.openedLinks.push(event.data.params.url);
+      send({ id, result: {} });
+    }
     else send({ id, result: {} });
   });
   window.deliver = (params) => send({ method: 'ui/notifications/tool-result', params });
@@ -145,7 +150,9 @@ for (const theme of themes)
       page,
     }) => {
       const card = await openCard(page, theme, state);
-      await expect(card.getByText('Built with saga a2ui')).toBeVisible();
+      await expect(card.locator('.credit')).toHaveText(
+        'Built with saga-a2ui, learn how to build your Saga.',
+      );
       await expect(mark(card)).toBeVisible();
       const box = (await mark(card).boundingBox())!;
       expect(box.width).toBeGreaterThan(16);
@@ -161,8 +168,8 @@ test('the playing card names saga a2ui in its credit and says whose turn it is',
   page,
 }) => {
   const card = await openCard(page, 'light', 'playing');
-  await expect(card.locator('.saga-attribution')).toHaveText(
-    /Built with saga a2ui/,
+  await expect(card.locator('.credit')).toHaveText(
+    'Built with saga-a2ui, learn how to build your Saga.',
   );
   await expect(card.locator('.status')).toHaveText('Your move. You are X.');
 });
@@ -208,3 +215,31 @@ test('the card does not fetch anything from the catalog name or any other site',
     ),
   ).toEqual([]);
 });
+
+for (const theme of themes)
+  test(`the ${theme} credit opens the website and tutorial through the host`, async ({
+    page,
+  }) => {
+    const card = await openCard(page, theme, 'playing');
+    await page.locator('#card').evaluate((frame) => {
+      frame.style.width = '320px';
+    });
+    await expect(card.locator('.credit')).toBeVisible();
+    expect(await card.locator('html').evaluate((root) =>
+      root.scrollWidth <= root.clientWidth,
+    )).toBe(true);
+    await card.getByRole('button', { name: 'saga-a2ui', exact: true }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).openedLinks))
+      .toEqual(['https://saga-ai.dev/']);
+    await card.getByRole('button', {
+      name: 'how to build your Saga', exact: true,
+    }).click();
+    await expect.poll(() => page.evaluate(() => (window as any).openedLinks))
+      .toEqual([
+        'https://saga-ai.dev/',
+        'https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react',
+      ]);
+    await expect(card.locator('.credit')).toHaveText(
+      'Built with saga-a2ui, learn how to build your Saga.',
+    );
+  });

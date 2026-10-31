@@ -73,3 +73,7 @@ body {
 .credit {
   margin-top: 1rem;
 }
+
+.credit .saga-attribution {
+  display: inline;
+}
