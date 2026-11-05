@@ -98,7 +98,7 @@ Worker tests run in the real Workers runtime (`workerd`, through the Cloudflare 
 
 ### Installing dependencies
 
-Set up with `npm ci`, which installs from the npm registry and the committed `package-lock.json`; CI does the same. The game needs `@saga-a2ui/react-mcp-stack` `0.11.0-rc.1`, published under the registry's `next` tag (the `latest` tag is still an earlier release and is not what this repository uses). The lockfile resolves the five SDK packages the application uses (`core`, `components`, `mcp`, `react` and `react-mcp-stack`) to that exact version from the registry, with their integrity hashes. No local tarball, file path or `--legacy-peer-deps` is involved.
+Set up with `npm ci`, which installs from the npm registry and the committed `package-lock.json`; CI does the same. The game needs `@saga-a2ui/react-mcp-stack` `1.0.0-rc.1`, published under the registry's `next` tag (the `latest` tag is still an earlier release and is not what this repository uses). The lockfile resolves the five SDK packages the application uses (`core`, `components`, `mcp`, `react` and `react-mcp-stack`) to that exact version from the registry, with their integrity hashes. No local tarball, file path or `--legacy-peer-deps` is involved.
 
 Update SDK dependencies in the root and game manifests together and regenerate the root lockfile. The tutorial in the SDK repository pins an examples revision for reproducible source and snippet qualification; it does not own a second game implementation.
 

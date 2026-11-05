@@ -1,4 +1,4 @@
-import { defineSurface, z } from '@saga-a2ui/react-mcp-stack';
+import { defineSurface, z3 } from '@saga-a2ui/react-mcp-stack';
 import { VIEW_TEXT } from './text.js';
 
 // The layout of the board: its data and its components. The layout gives the markup its IDs and its
@@ -13,28 +13,28 @@ export const SQUARE_ID = 'square';
 export const NEW_GAME_ID = 'new-game';
 export const CHECK_ID = 'check-move';
 
-const SquareDataSchema = z.object({
+const SquareDataSchema = z3.object({
   /** The square's number, 0 to 8, which the square action sends. */
-  index: z.number(),
+  index: z3.number(),
   /** What a screen reader says: "Row 1, column 2, empty". */
-  label: z.string(),
+  label: z3.string(),
   /** "X", "O" or empty. */
-  mark: z.string(),
+  mark: z3.string(),
   /** Non-empty when the square can be played now; an empty string disables the control. */
-  playable: z.string(),
+  playable: z3.string(),
   /** Non-empty for the three squares of a winning line. */
-  winning: z.string(),
+  winning: z3.string(),
 });
 
-const BoardDataSchema = z.object({
-  gameId: z.string(),
+const BoardDataSchema = z3.object({
+  gameId: z3.string(),
   /** The one status line: whose turn it is, how the game ended, or what to do next. */
-  status: z.string(),
-  squares: z.array(SquareDataSchema),
+  status: z3.string(),
+  squares: z3.array(SquareDataSchema),
   /** Non-empty when "Check for the assistant's move" should be offered. */
-  canCheck: z.string(),
+  canCheck: z3.string(),
   /** The moves so far, in words, one line each. */
-  history: z.array(z.object({ text: z.string() })),
+  history: z3.array(z3.object({ text: z3.string() })),
 });
 
 export const boardSurface = defineSurface({
@@ -132,4 +132,4 @@ export const boardSurface = defineSurface({
 });
 
 /** The data the surface shows: replaced whole by each update. */
-export type BoardData = z.infer<typeof BoardDataSchema>;
+export type BoardData = z3.infer<typeof BoardDataSchema>;
