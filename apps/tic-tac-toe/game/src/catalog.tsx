@@ -7,7 +7,7 @@ import {
   ListApi,
   RowApi,
   SagaAttribution,
-  z,
+  z3,
   type HostLinks,
   type ReactCatalogComponent,
 } from '@saga-a2ui/react-mcp-stack';
@@ -36,10 +36,10 @@ function childrenOf(
 
 const LineApi = {
   name: 'Line',
-  schema: z
+  schema: z3
     .object({
       text: CommonSchemas.DynamicString,
-      kind: z.enum(['body', 'status']),
+      kind: z3.enum(['body', 'status']),
     })
     .strict(),
 };
@@ -63,7 +63,7 @@ const Line: ReactCatalogComponent = createComponentImplementation(
 const GameDetails: ReactCatalogComponent = createComponentImplementation(
   {
     name: 'GameDetails',
-    schema: z.object({ gameId: CommonSchemas.DynamicString }).strict(),
+    schema: z3.object({ gameId: CommonSchemas.DynamicString }).strict(),
   },
   ({ props }) => (
     <details>
@@ -99,7 +99,7 @@ const Board: ReactCatalogComponent = createComponentImplementation(
 
 const SquareFaceApi = {
   name: 'SquareFace',
-  schema: z
+  schema: z3
     .object({
       mark: CommonSchemas.DynamicString,
       label: CommonSchemas.DynamicString,
@@ -124,7 +124,7 @@ const SquareFace: ReactCatalogComponent = createComponentImplementation(
 
 const ShownApi = {
   name: 'Shown',
-  schema: z
+  schema: z3
     .object({
       when: CommonSchemas.DynamicString,
       child: CommonSchemas.ComponentId,
@@ -150,7 +150,7 @@ function createCredit(
   links: () => HostLinks | undefined,
 ): ReactCatalogComponent {
   return createComponentImplementation(
-    { name: 'Credit', schema: z.object({}).strict() },
+    { name: 'Credit', schema: z3.object({}).strict() },
     () => (
       <footer className="credit">
         <SagaAttribution links={links()} name="saga-a2ui" />
@@ -186,7 +186,7 @@ export const boardEntries: readonly ReactCatalogComponent[] = [
 const required = {
   name: 'required',
   returnType: 'boolean',
-  schema: z.object({ value: z.any() }).strict(),
+  schema: z3.object({ value: z3.any() }).strict(),
   execute: (args: Record<string, unknown>): boolean =>
     args.value !== undefined && args.value !== null && args.value !== '',
 };

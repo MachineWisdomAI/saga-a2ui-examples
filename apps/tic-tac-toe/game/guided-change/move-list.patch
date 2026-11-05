@@ -19,7 +19,7 @@ diff --git a/src/catalog.tsx b/src/catalog.tsx
 +
  const SquareFaceApi = {
    name: 'SquareFace',
-   schema: z
+   schema: z3
 @@ -161,6 +173,7 @@ export const boardEntries: readonly ReactCatalogComponent[] = [
    Column,
    Row,
