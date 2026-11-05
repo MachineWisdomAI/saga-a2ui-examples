@@ -237,7 +237,7 @@ for (const theme of themes)
     await expect.poll(() => page.evaluate(() => (window as any).openedLinks))
       .toEqual([
         'https://saga-ai.dev/',
-        'https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react',
+        'https://docs.saga-a2ui.dev/docs/releases/1.0.0/guides/build-tic-tac-toe-with-react',
       ]);
     await expect(card.locator('.credit')).toHaveText(
       'Built with saga-a2ui, learn how to build your Saga.',
