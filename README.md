@@ -10,7 +10,7 @@ Example apps built with saga a2ui — interactive experiences inside AI assistan
 | Tutorial | [Build tic-tac-toe with React](https://github.com/MachineWisdomAI/saga-a2ui/blob/main/docs/build-tic-tac-toe-with-react.md) |
 | MCP endpoint | https://examples.saga-ai.dev/tic-tac-toe/mcp |
 
-The game credits the framework through **Built with saga-a2ui, learn how to build your Saga.** The framework name opens [the website](https://saga-ai.dev/); **how to build your Saga** opens [the tic-tac-toe tutorial](https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react), which uses the `0.11.0-rc.1` prerelease. The website's GitHub destination is the SDK repository; this repository owns the application.
+The game credits the framework through **Built with saga-a2ui, learn how to build your Saga.** The framework name opens [the website](https://saga-ai.dev/); **how to build your Saga** opens [the tic-tac-toe tutorial](https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react). The website's GitHub destination is the SDK repository; this repository owns the application.
 
 ## Tic Tac Toe (`apps/tic-tac-toe`)
 
@@ -98,7 +98,7 @@ Worker tests run in the real Workers runtime (`workerd`, through the Cloudflare 
 
 ### Installing dependencies
 
-Set up with `npm ci`, which installs from the npm registry and the committed `package-lock.json`; CI does the same. The game needs `@saga-a2ui/react-mcp-stack` `1.0.0-rc.1`, published under the registry's `next` tag (the `latest` tag is still an earlier release and is not what this repository uses). The lockfile resolves the five SDK packages the application uses (`core`, `components`, `mcp`, `react` and `react-mcp-stack`) to that exact version from the registry, with their integrity hashes. No local tarball, file path or `--legacy-peer-deps` is involved.
+Set up with `npm ci`, which installs from the npm registry and the committed `package-lock.json`; CI does the same. The game needs `@saga-a2ui/react-mcp-stack` `1.0.1`, the release under the registry's `latest` tag. The lockfile resolves the five SDK packages the application uses (`core`, `components`, `mcp`, `react` and `react-mcp-stack`) to the exact versions the stack pins, from the registry, with their integrity hashes. No local tarball, file path or `--legacy-peer-deps` is involved.
 
 Update SDK dependencies in the root and game manifests together and regenerate the root lockfile. The tutorial in the SDK repository pins an examples revision for reproducible source and snippet qualification; it does not own a second game implementation.
 
