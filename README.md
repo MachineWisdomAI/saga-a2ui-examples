@@ -10,7 +10,7 @@ Example apps built with saga a2ui — interactive experiences inside AI assistan
 | Tutorial | [Build tic-tac-toe with React](https://github.com/MachineWisdomAI/saga-a2ui/blob/main/docs/build-tic-tac-toe-with-react.md) |
 | MCP endpoint | https://examples.saga-ai.dev/tic-tac-toe/mcp |
 
-The game credits the framework through **Built with saga-a2ui, learn how to build your Saga.** The framework name opens [the website](https://saga-ai.dev/); **how to build your Saga** opens [the tic-tac-toe tutorial](https://docs.saga-a2ui.dev/docs/releases/1.0.0/guides/build-tic-tac-toe-with-react), for saga a2ui 1.0. The website's GitHub destination is the SDK repository; this repository owns the application.
+The game credits the framework through **Built with saga-a2ui, learn how to build your Saga.** The framework name opens [the website](https://saga-ai.dev/); **how to build your Saga** opens [the tic-tac-toe tutorial](https://docs.saga-a2ui.dev/docs/releases/0.11.0-rc.1/guides/build-tic-tac-toe-with-react). The website's GitHub destination is the SDK repository; this repository owns the application.
 
 ## Tic Tac Toe (`apps/tic-tac-toe`)
 
